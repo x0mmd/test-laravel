@@ -1,7 +1,7 @@
 # OpenCBT — Computer-Based Testing System
 ### Architecture Blueprint Summary
 
-> **Stack:** Laravel 11 · shadcn/ui · MySQL 8 · Redis · React 18  
+> **Stack:** Laravel 12 · Tailwind CSS v4.2 · MySQL 8 · Redis · Alpine.js
 > **Scale:** 100–10,000 concurrent users · Self-hosted · Zero licensing cost
 
 ---
@@ -113,9 +113,9 @@ Granular, policy-driven permission system ensuring every user can only access wh
 ```
 ┌─────────────────────────────────────────────────────────────────┐
 │                        CLIENT LAYER                             │
-│  React 18 + shadcn/ui + Tailwind CSS + Inertia.js/SPA          │
+│  Laravel Blade + Tailwind CSS v4.2 + Alpine.js                 │
 │  TipTap Editor · KaTeX · Monaco Editor · face-api.js           │
-│  Zustand (state) · React Query (server cache) · IndexedDB      │
+│  Chart.js (analytics) · IndexedDB (offline cache)              │
 └──────────────────────────┬──────────────────────────────────────┘
                            │ HTTPS / WSS
 ┌──────────────────────────▼──────────────────────────────────────┐
@@ -126,7 +126,7 @@ Granular, policy-driven permission system ensuring every user can only access wh
                            │
 ┌──────────────────────────▼──────────────────────────────────────┐
 │                    APPLICATION LAYER                            │
-│              Laravel 11 (PHP 8.3-FPM)                          │
+│              Laravel 12 (PHP 8.3-FPM)                          │
 │  ┌──────────┐ ┌──────────┐ ┌──────────┐ ┌──────────────────┐  │
 │  │  Auth &  │ │ Question │ │  Exam    │ │    Grading &     │  │
 │  │  RBAC    │ │  Bank    │ │ Delivery │ │    Analytics     │  │
@@ -162,11 +162,12 @@ Granular, policy-driven permission system ensuring every user can only access wh
 ### Phase 1 — MVP (Weeks 1–8)
 **Goal:** Working end-to-end exam flow for objective questions
 
-- [ ] Laravel 11 project setup with MySQL, Redis, Sanctum auth
+- [ ] Laravel 12 project setup with MySQL, Redis, Sanctum auth
+- [ ] Tailwind CSS v4.2 configured via Vite (@import 'tailwindcss' CSS-first setup)
 - [ ] User management with RBAC (Spatie Laravel-Permission)
-- [ ] Question bank: MCQ and True/False with basic rich text editor
+- [ ] Question bank: MCQ and True/False with basic rich text editor (TipTap)
 - [ ] Exam builder: manual question selection, time limits, scheduling
-- [ ] Student exam-taking interface with auto-save, timer, submission
+- [ ] Student exam-taking interface (Blade + Tailwind + Alpine.js) with auto-save, timer, submission
 - [ ] Auto-grading for objective questions
 - [ ] Basic results view for students and instructors
 - [ ] Admin user management panel
@@ -180,7 +181,7 @@ Granular, policy-driven permission system ensuring every user can only access wh
 - [ ] Anti-cheating: tab-switch, fullscreen, copy-paste, IP logging, device fingerprinting
 - [ ] Webcam snapshot and screenshot capture
 - [ ] Proctor live dashboard with real-time violation alerts (Laravel Echo + Soketi)
-- [ ] Comprehensive analytics dashboard with Recharts
+- [ ] Comprehensive analytics dashboard with Chart.js
 - [ ] Email + in-app notification system
 - [ ] Question bank import/export (QTI, CSV)
 - [ ] Exam randomization (question pools, shuffle)
@@ -252,4 +253,4 @@ All dependencies use **MIT**, **Apache 2.0**, or **ISC** licenses — fully comp
 
 ---
 
-*Generated for OpenCBT v1.0 Architecture Blueprint · Laravel 11 · shadcn/ui · MySQL 8 · Redis 7*
+*Generated for OpenCBT v1.0 Architecture Blueprint · Laravel 12 · Tailwind CSS v4.2 · MySQL 8 · Redis 7*
